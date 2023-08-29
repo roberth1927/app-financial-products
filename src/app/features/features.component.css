@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.logo {
+  max-width: 100%;
+  width: 200px;
+  height: auto;
+}
