@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  height: 100vh;
+}
+
+.container-content{
+  background-color: #FFFFFF;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 45px;
+}
+
+.title{
+  text-align: center;
+  padding: 1px;
+}
