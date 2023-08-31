@@ -1,24 +1,52 @@
-<table class="data-table">
-  <thead>
-    <tr>
-      <th>Logo</th>
-      <th>Nombre del producto</th>
-      <th>Descripción</th>
-      <th>Fecha de liberación</th>
-      <th>Fecha de reestructuración</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="scrollbar-container">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of tableHeaders">
+          {{ header !== 'description' && header !== 'dateRelease' && header !== 'dateRevision' ? header : '' }}
+          <ng-container *ngIf="header === 'Descripción' || header === 'Fecha de liberación' || header === 'Fecha de reestructuración'">
+            <i class="fas fa-exclamation-circle text-muted"></i>
+          </ng-container>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProductsPaginados">
+        <td>
+          <img
+            *ngIf="isValidUrl(product.logo); else defaultLogo"
+            [src]="product.logo"
+            alt="Logo"
+            class="product-logo"
+          />
+          <ng-template #defaultLogo>
+            <img [src]="defaultLogoUrl" alt="Logo por defecto" class="product-logo" />
+          </ng-template>
+        </td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.dateRelease | date:'dd/MM/yyyy':'UTC' }}</td>
+        <td>{{ product.dateRevision | date:'dd/MM/yyyy':'UTC' }}</td>
+        <td class="options-column">
+          <div class="options-menu">
+            <button class="options-button">...</button>
+            <div class="options-dropdown">
+              <button [routerLink]="['edicion', product.id]" class="edit-button">Editar</button>
+              <button (click)="deleteProduct(product.id)" class="delete-button">Eliminar</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    <tr>
-      <td>Logo 1</td>
-      <td>Producto 1</td>
-      <td>Descripción 1</td>
-      <td>Fecha 1</td>
-      <td>Fecha 1</td>
-      <td>...</td>
-    </tr>
+<div class="table-summary">
+  {{ filteredProductsPaginados.length }} Resultados
 
-  </tbody>
-</table>
+  <div class="records-per-page">
+    <select class="class-select" [(ngModel)]="recordsPerPage" (ngModelChange)="onRecordsPerPageChange()">
+      <option *ngFor="let opcion of opcionesSelect" [value]="opcion">{{ opcion }}</option>
+    </select>
+  </div>
+</div>

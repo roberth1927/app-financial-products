@@ -3,11 +3,11 @@
   <div class="container-content">
 
     <div class="title">
-       <h1>Formulario de Registro</h1>
+       <h1>Formulario de {{!flag ? 'Registro' : 'Edicion'}}</h1>
     </div>
 
     <hr/>
-    <app-form-product></app-form-product>
+    <app-form-product #productForm (formSubmitted)="handleFormSubmit($event)"></app-form-product>
 
   </div>
 

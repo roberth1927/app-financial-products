@@ -1,27 +1,53 @@
-# AppFinancialProducts
+# App de Registro de Productos Financieros
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Esta es una aplicación para registrar productos financieros, donde puedes crear, editar, eliminar y listar productos. La aplicación sigue principios SOLID y TDD para asegurar la calidad del código. Los estilos se han implementado utilizando CSS, y para las confirmaciones se utiliza SweetAlert. La aplicación está desarrollada en Angular.
 
-## Development server
+## Instalación
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clona el repositorio desde: [https://github.com/roberth1927/app-financial-products.git]
 
-## Code scaffolding
+2. En la raíz del proyecto, ejecuta el siguiente comando para instalar las dependencias:
+   
+   `npm install`
+   
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Crea un archivo `environment.ts` en la ruta `/src/environments/` y agrega la variable `authorId`  y la variable `apiUrl` con el valor adecuado. Este archivo debe tener la siguiente estructura:
 
-## Build
+   ```typescript
+   export const environment = {
+     production: false,
+     apiUrl: 'URL_BASE',
+     authorId: 'ID_DE_AUTOR_AQUI'
+   };
+   
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4. Luego, para ejecutar la aplicación en modo de desarrollo, utiliza el siguiente comando:
+   
+  `ng serve`
+   
 
-## Running unit tests
+5. Abre un navegador y navega a `http://localhost:4200/` para acceder a la aplicación.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Ejecución de Pruebas
 
-## Further help
+1. Asegúrate de haber instalado todas las dependencias del proyecto ejecutando:
+   `npm install`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Una vez que todas las dependencias estén instaladas, puedes ejecutar las pruebas con el siguiente comando:
+  `ng test`
+  Esto iniciará el marco de pruebas Karma y ejecutará todas las pruebas en la aplicación.
+
+3. Después de ejecutar las pruebas, verás los resultados en la terminal. Deberías ver una lista de pruebas exitosas y, en caso de que alguna prueba falle, se mostrarán los detalles del fallo.
+   
+
+## Versiones
+
+- Angular: 16.1.x
+
+
+## Contacto
+
+Si necesitas acceder al archivo `environment.ts` o tienes alguna pregunta, no dudes en contactarnos a través del correo electrónico: [robinmoralesquiroz@gmail.com].
+

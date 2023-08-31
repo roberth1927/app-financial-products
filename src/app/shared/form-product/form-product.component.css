@@ -9,7 +9,7 @@
 
 .form-group {
   flex: 1;
-  margin-right: 10px;
+  margin: 4px 10px 35px 10px
 }
 
 .form-group:last-child {
@@ -41,17 +41,29 @@
   cursor: pointer;
   margin: 0 20px;
   border: none;
+  font-weight: bold;
+  color: #101E3E;
+  transition: background-color 0.3s ease;
+
+
+}
+.btn-global:hover {
+  background-color: #e09300;
+}
+.btn-reiniciar:hover{
+  background-color: #a3a3a3;
+
 
 }
 
 .btn-enviar {
-  background-color: yellow;
-  color: #000080;
+  background-color: #F8DE53;
+
 }
 
 .btn-reiniciar {
   background-color: #ccc;
-  color: #000080;
+
 }
 
 .btn:hover {
@@ -65,4 +77,10 @@
 }
 .error-input {
   border-color: red;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+  background-color: #F5F5F5;
 }

@@ -1,9 +1,9 @@
 
 .container {
   width: 100%;
-  background-color: #f0f0f0;
-  padding: 20px;
   height: 100vh;
+  background-color: #F2F6F9;
+  padding: 20px;
 }
 
 .container-content{

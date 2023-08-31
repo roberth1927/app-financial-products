@@ -6,6 +6,7 @@ import { RegisterProductsComponent } from './register-products/register-products
 import { ContainerComponentsComponent } from './container-components/container-components.component';
 import { FormProductModule } from 'src/app/shared/form-product/form-product.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormProductModule,
-    RouterModule
+    RouterModule, FormsModule
   ]
 
 })

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeaturesComponent } from './features.component';
 import { FeaturesRoutingModule } from './features-routing.module';
+import { LayoutModule } from '../shared/layout/layout.module';
 
 
 
@@ -11,7 +12,8 @@ import { FeaturesRoutingModule } from './features-routing.module';
   ],
   imports: [
     CommonModule,
-    FeaturesRoutingModule
+    FeaturesRoutingModule,
+    LayoutModule
   ]
 })
 export class FeaturesModule { }
