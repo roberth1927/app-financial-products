@@ -25,8 +25,8 @@ export class ProductsService {
         dateRelease: item.date_release,
         dateRevision: item.date_revision,
       }));
-
-      this.dataProducts = transformedData;
+      const reversedData = transformedData.reverse();
+      this.dataProducts = reversedData;
       this.filteredProductsSubject.next(transformedData);
 
       return transformedData;
