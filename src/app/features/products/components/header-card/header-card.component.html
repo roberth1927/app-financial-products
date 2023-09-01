@@ -1,4 +1,4 @@
 <div class="header">
-  <input class="search-input" type="text" placeholder="Search..." (input)="onFilterChange($event)">
-  <app-custom-buttom class="add-button" label="Agregar" [routerLink]="['register']"></app-custom-buttom>
+  <input @inputAnimation class="search-input" type="text" placeholder="Search..." (input)="onFilterChange($event)">
+  <app-custom-buttom @buttonAnimation class="add-button" label="Agregar" [routerLink]="['register']"></app-custom-buttom>
 </div>

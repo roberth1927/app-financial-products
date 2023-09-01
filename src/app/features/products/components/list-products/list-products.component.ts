@@ -2,17 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../../../core/ProductInterface';
 import { ProductsService } from 'src/app/features/services/products.service';
 import Swal from 'sweetalert2';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
   styleUrls: ['./list-products.component.css'],
+  animations: [
+    trigger('fadeAndMoveUp', [
+      transition('* => void', [
+        animate('500ms', style({ opacity: 0, transform: 'translateY(-50px)' })),
+      ]),
+    ]),
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('400ms', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ListProductsComponent implements OnInit {
   filteredProducts: Product[] = [];
   filteredProductsPaginados: Product[] = [];
   recordsPerPage: number = 5;
   opcionesSelect: number[] = [];
+  deletedProducts: string[] = [];
   defaultLogoUrl =
     'https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg';
 
@@ -57,7 +72,11 @@ export class ListProductsComponent implements OnInit {
     }
   }
 
-  async deleteProduct(id: string) {
+  isProductDeleted(product: Product): boolean {
+    return this.deletedProducts.includes(product.id);
+  }
+
+  async deleteProduct(product: Product) {
     try {
       const result = await Swal.fire({
         title: '¿Estás seguro?',
@@ -72,13 +91,17 @@ export class ListProductsComponent implements OnInit {
       if (result.isConfirmed) {
         Swal.fire('Eliminar', 'Registro eliminado', 'success');
 
-        this.filteredProducts = this.filteredProducts.filter(
-          (product) => product.id !== id
-        );
-        this.onRecordsPerPageChange();
-        //TODO: error en endpoint
-        //this.productService.deleteProduct(id).subscribe()
-      } else {
+        this.deletedProducts.push(product.id);
+
+        setTimeout(() => {
+          this.filteredProducts = this.filteredProducts.filter(
+            (p) => p.id !== product.id
+          );
+          this.deletedProducts = this.deletedProducts.filter(
+            (id) => id !== product.id
+          );
+          this.onRecordsPerPageChange();
+        }, 1200);
       }
     } catch (error) {}
   }

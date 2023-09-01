@@ -11,32 +11,36 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of filteredProductsPaginados">
-        <td>
-          <img
-            *ngIf="isValidUrl(product.logo); else defaultLogo"
-            [src]="product.logo"
-            alt="Logo"
-            class="product-logo"
-          />
-          <ng-template #defaultLogo>
-            <img [src]="defaultLogoUrl" alt="Logo por defecto" class="product-logo" />
-          </ng-template>
-        </td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.dateRelease | date:'dd/MM/yyyy':'UTC' }}</td>
-        <td>{{ product.dateRevision | date:'dd/MM/yyyy':'UTC' }}</td>
-        <td class="options-column">
-          <div class="options-menu">
-            <button class="options-button">...</button>
-            <div class="options-dropdown">
-              <button [routerLink]="['edicion', product.id]" class="edit-button">Editar</button>
-              <button (click)="deleteProduct(product.id)" class="delete-button">Eliminar</button>
+      <ng-container *ngFor="let product of filteredProductsPaginados; let i = index">
+
+        <tr [@fadeAndMoveUp]="isProductDeleted(product)" [@fadeIn]="i">
+          <td>
+            <img
+              *ngIf="isValidUrl(product.logo); else defaultLogo"
+              [src]="product.logo"
+              alt="Logo"
+              class="product-logo"
+            />
+            <ng-template #defaultLogo>
+              <img [src]="defaultLogoUrl" alt="Logo por defecto" class="product-logo" />
+            </ng-template>
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.dateRelease | date:'dd/MM/yyyy':'UTC' }}</td>
+          <td>{{ product.dateRevision | date:'dd/MM/yyyy':'UTC' }}</td>
+          <td class="options-column">
+            <div class="options-menu">
+              <button class="options-button">...</button>
+              <div class="options-dropdown">
+                <button [routerLink]="['edicion', product.id]" class="edit-button">Editar</button>
+                <button (click)="deleteProduct(product)" class="delete-button">Eliminar</button>
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
+          </td>
+        </tr>
+      </ng-container>
+
     </tbody>
   </table>
 </div>
