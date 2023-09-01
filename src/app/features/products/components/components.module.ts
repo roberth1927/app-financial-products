@@ -7,6 +7,7 @@ import { ContainerComponentsComponent } from './container-components/container-c
 import { FormProductModule } from 'src/app/shared/form-product/form-product.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CustomButtomModule } from 'src/app/shared/layout/custom-buttom/custom-buttom.module';
 
 
 
@@ -15,12 +16,14 @@ import { FormsModule } from '@angular/forms';
     HeaderCardComponent,
     ListProductsComponent,
     RegisterProductsComponent,
-    ContainerComponentsComponent
+    ContainerComponentsComponent,
+
   ],
   imports: [
     CommonModule,
     FormProductModule,
-    RouterModule, FormsModule
+    CustomButtomModule,
+    RouterModule, FormsModule,
   ]
 
 })

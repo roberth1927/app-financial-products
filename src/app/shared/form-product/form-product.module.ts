@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormProductComponent } from './form-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomButtomModule } from '../layout/custom-buttom/custom-buttom.module';
 
 
 
@@ -11,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomButtomModule
   ],
   exports: [
     FormProductComponent

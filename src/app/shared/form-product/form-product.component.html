@@ -56,8 +56,9 @@
       </div>
     </div>
     <div class="btn-group">
-      <button (click)="resetForm()" type="button" class="btn-global btn-reiniciar">Reiniciar</button>
-      <button (click)="onSubmit()" [disabled]="form.invalid" type="submit" class="btn-global btn-enviar">Enviar</button>
+      <app-custom-buttom (click)="resetForm()" type="button" class="btn-reiniciar" label="Reiniciar" ></app-custom-buttom>
+      <div class="space-buttom"></div>
+      <app-custom-buttom (click)="onSubmit()" [disabled]="form.invalid" type="submit" class="add-button" label="Enviar"></app-custom-buttom>
     </div>
   </form>
 
