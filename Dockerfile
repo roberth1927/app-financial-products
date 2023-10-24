@@ -10,17 +10,21 @@ COPY package*.json ./
 # Install project dependencies
 RUN npm install
 
+# Install project dependencies and Angular CLI
+RUN npm install -g @angular/cli && npm install
+
+
 # Copy the rest of the application code to the working directory
 COPY . .
 
 # Build the Angular application for production
-RUN npm run build
+RUN ng build
 
 # Use Nginx as the base image for serving static files
 FROM nginx:alpine
 
 # Copy the built Angular application files to the NGINX HTML directory
-COPY --from=build /app/dist/app-financial-products /usr/share/nginx/html
+COPY --from=build /dist/app-financial-products /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 80
